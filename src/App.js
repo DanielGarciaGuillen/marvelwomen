@@ -5,7 +5,13 @@ import ReactModal from "react-modal";
 import md5 from "md5";
 
 import ModalBox from "./modal";
-import Character from "./character";
+import Widow from "./heroes/blackwidow";
+import CapMarvel from "./heroes/capmarvel";
+import Medusa from "./heroes/medusa";
+import Storm from "./heroes/storm";
+import MsMarvel from "./heroes/msmarvel";
+import Scarlet from "./heroes/scarlet";
+import SheHulk from "./heroes/shehulk";
 
 const API = "https://gateway.marvel.com/v1/public/characters/";
 
@@ -24,14 +30,17 @@ const opts = `1009215`; // whatever parameters you want, e.g., `characters/10092
   publicKey
 }&hash=${hash}&ts=${ts}`; // putting it all together
  */
-const character = [];
+var character = [];
+
+var comics = [];
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       query: "",
-      character: []
+      character: [],
+      comics: []
     };
     this.handleUpdateQuery = this.handleUpdateQuery.bind(this);
   }
@@ -45,7 +54,7 @@ class App extends Component {
   //Callback from Child ChangeTheme Component
   async handleUpdateQuery(query) {
     character.length = 0;
-    console.log(this.state);
+    comics.length = 0;
 
     await this.setStateAsync({
       query: query,
@@ -61,56 +70,49 @@ class App extends Component {
     );
 
     const { data } = await res.json();
-    console.log(data.results["0"]);
-    const results = data.results["0"];
+
+    const results = data.results[0];
+    console.log(results);
+    console.log(results.comics.items);
+    comics = results.comics.items;
     await this.setStateAsync({
       character: results,
-      loading: false
+      comics: comics
     });
     console.log(this.state);
   }
 
   render() {
+    /*  let { character } = this.state; */
+
+    const name = this.state.character.name;
+    const comics = this.state.comics;
+
+    /*  console.log(this.state.character.comics.collectionURI); */
+
     return (
       <div className="panels">
         {/*  PANEL ONE */}
-        <Character
-          character={character}
+        <CapMarvel
           onClick={this.handleUpdateQuery.bind(this)}
+          name={name}
+          comics={comics}
         />
         {/*  PANEL TWO */}
-        <Character
-          character={character}
-          onClick={this.handleUpdateQuery.bind(this)}
-        />
+        <Medusa name={name} onClick={this.handleUpdateQuery.bind(this)} />
         {/*  PANEL THREE */}
-        <Character
-          character={character}
-          onClick={this.handleUpdateQuery.bind(this)}
-        />
+        <Scarlet name={name} onClick={this.handleUpdateQuery.bind(this)} />
         {/*  PANEL FOUR */}
-        <Character
-          character={character}
-          onClick={this.handleUpdateQuery.bind(this)}
-        />
+        <MsMarvel name={name} onClick={this.handleUpdateQuery.bind(this)} />
 
         {/*  PANEL FIVE */}
-        <Character
-          character={character}
-          onClick={this.handleUpdateQuery.bind(this)}
-        />
+        <Widow onClick={this.handleUpdateQuery.bind(this)} name={name} />
 
         {/*  PANEL SIX */}
-        <Character
-          character={character}
-          onClick={this.handleUpdateQuery.bind(this)}
-        />
+        <SheHulk name={name} onClick={this.handleUpdateQuery.bind(this)} />
 
         {/*  PANEL SEVEN */}
-        <Character
-          character={character}
-          onClick={this.handleUpdateQuery.bind(this)}
-        />
+        <Storm name={name} onClick={this.handleUpdateQuery.bind(this)} />
       </div>
     );
   }

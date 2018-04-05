@@ -8,7 +8,7 @@ class ModalBox extends React.Component {
 
   //RENDERRRRRRRRRRRRRRRRRRRRRRRRRRRR
   render() {
-    console.log(this.props);
+    /*   console.log(this.props); */
     /*  const { character } = this.props;
     var { arr } = Object.values({ character });
 
@@ -17,5 +17,3 @@ class ModalBox extends React.Component {
     return <div>Hello</div>;
   }
 }
-
-export default ModalBox;

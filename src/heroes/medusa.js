@@ -1,27 +1,19 @@
 import React, { Component } from "react";
 
-import "./App.css";
+import "../App.css";
 import ReactModal from "react-modal";
-import md5 from "md5";
-
-import ModalBox from "./modal";
-
-/*
-Black Widow 1009189, Captain Marvel 1010338, Medusa 1009438, Ms. Marvel 1017577,
- Scarlet Witch1009562, She-Hulk 1017111, Storm 1009629
- */
 
 let id = ""; // whatever parameters you want, e.g., `characters/1009215`.
 var query = "";
 
 const character = [];
 
-class Character extends Component {
-  constructor(props) {
-    super(props);
+export default class Medusa extends Component {
+  constructor() {
+    super();
     this.state = {
       showModal: false,
-      id: ""
+      query: ""
     };
     this.handleQuery = this.handleQuery.bind(this);
     this.validateTitle = this.validateTitle.bind(this);
@@ -40,8 +32,7 @@ class Character extends Component {
   async handleQuery({ currentTarget }) {
     currentTarget.preventDefault;
     query = currentTarget.value;
-    await this.setStateAsync({ id: query, showModal: true });
-    console.log(this.state);
+    await this.setStateAsync({ query: query, showModal: true });
     await this.validateTitle();
   }
 
@@ -49,31 +40,33 @@ class Character extends Component {
   validateTitle() {
     const { onClick } = this.props;
     onClick(query);
-    console.log(this.props);
-    console.log(this.state);
   }
   render() {
-    return (
-      <div className="panels">
-        <div className="panel panel1">
-          <p>Hey</p>
+    console.log(this.props);
+    /*  console.log(character.name);
+    const name = character.name;
+    const modified = character.modified;
+    const id = character.id; */
 
-          <button value="1009189" onClick={this.handleQuery}>
-            Let's
+    return (
+      <React.Fragment>
+        <div className="panel panel2">
+          <button className="more" value="1009438" onClick={this.handleQuery}>
+            More
           </button>
-          <p>Dance</p>
+
           <ReactModal
             isOpen={this.state.showModal}
             contentLabel="onRequestClose Example"
             onRequestClose={this.handleCloseModal}
             shouldCloseOnOverlayClick={true}
           >
-            <ModalBox character={this.props} />
+            <div> {this.props.name}</div>
+
+            {/* <ModalBox character={this.props} /> */}
           </ReactModal>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
-
-export default Character;

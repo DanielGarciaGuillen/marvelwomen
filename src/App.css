@@ -50,27 +50,29 @@ body {
 }
 
 .panel3 {
-  background-image: url(https://i.annihil.us/u/prod/marvel//universe3zx/images/f/f9/BlackWidow.jpg);
+  background-image: url(https://vignette.wikia.nocookie.net/marveldatabase/images/4/48/Scarlet_Witch_Vol_2_2_Anka_Variant_Textless.jpg/revision/latest?cb=20151205225342);
 }
 
 .panel4 {
   background-image: url(https://orig00.deviantart.net/56c0/f/2013/312/a/a/all_new_ms_marvel_by_jprart-d6tindx.jpg);
+  /*  background-image: url(https://i.annihil.us/u/prod/marvel/i/mg/6/30/537ba61b764b4.jpg);
+   */
 }
 
 .panel5 {
-  background-image: url(https://vignette.wikia.nocookie.net/marveldatabase/images/4/48/Scarlet_Witch_Vol_2_2_Anka_Variant_Textless.jpg/revision/latest?cb=20151205225342);
+  background-image: url(https://i.annihil.us/u/prod/marvel//universe3zx/images/f/f9/BlackWidow.jpg);
 }
 
 .panel6 {
-  background-image: url(https://i.pinimg.com/564x/8e/6f/89/8e6f8914695b17afa1411c7b87f5958a.jpg);
-}
-
-.panel7 {
   background-image: url(http://media.comicbook.com/wp-content/uploads/2014/04/Storm_1_Bianchi_Variant.jpg);
 }
 
-/* Flex Items */
+.panel7 {
+  background-image: url(https://i.pinimg.com/564x/8e/6f/89/8e6f8914695b17afa1411c7b87f5958a.jpg);
+}
 
+/* Flex Items */
+/*
 .panel > * {
   margin: 0;
   width: 100%;
@@ -95,7 +97,7 @@ body {
 
 .panel.open-active > *:last-child {
   transform: translateY(0);
-}
+} */
 
 .panel p {
   text-transform: uppercase;
@@ -103,7 +105,7 @@ body {
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
   font-size: 2em;
 }
-
+/*
 .panel p:nth-child(2) {
   font-size: 4em;
 }
@@ -111,4 +113,12 @@ body {
 .panel.open {
   flex: 5;
   font-size: 40px;
+}
+ */
+
+.more {
+  /* font-size: 2em; */
+  margin-top: 615px;
+  width: 20%;
+  height: 30px;
 }
