@@ -46,7 +46,17 @@ export default class CapMarvel extends Component {
     /*  console.log(character.name);
     const name = character.name;
     const modified = character.modified;
-    const id = character.id; */
+    */
+    const comics = this.props.comics;
+    console.log(comics);
+    var listComics = comics.map(comic => {
+      return (
+        <ul>
+          <li key={comic.name} />
+          {comic.name}
+        </ul>
+      );
+    });
 
     return (
       <React.Fragment>
@@ -62,7 +72,7 @@ export default class CapMarvel extends Component {
             shouldCloseOnOverlayClick={true}
           >
             <div> {this.props.name}</div>
-
+            {listComics}
             {/* <ModalBox character={this.props} /> */}
           </ReactModal>
         </div>

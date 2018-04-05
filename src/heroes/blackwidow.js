@@ -46,7 +46,19 @@ export default class Widow extends Component {
     /*  console.log(character.name);
     const name = character.name;
     const modified = character.modified;
-    const id = character.id; */
+    */
+    const comics = this.props.comics;
+    console.log(comics);
+    /*  listJobs = jobsArraySplit.map(job => {
+      return (
+        <ListJobs key={job[0]}>
+          <JobTitle>{job[0]}</JobTitle>
+          <Apply target="_blank" href={job[1]}>
+            Apply
+          </Apply>
+        </ListJobs>
+      );
+    }); */
 
     return (
       <React.Fragment>
