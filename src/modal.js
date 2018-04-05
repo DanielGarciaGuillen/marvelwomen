@@ -8,12 +8,13 @@ class ModalBox extends React.Component {
 
   //RENDERRRRRRRRRRRRRRRRRRRRRRRRRRRR
   render() {
-    const { character } = this.props;
+    console.log(this.props);
+    /*  const { character } = this.props;
     var { arr } = Object.values({ character });
 
     console.log({ character });
-
-    return <div>{character.name}</div>;
+ */
+    return <div>Hello</div>;
   }
 }
 

@@ -5,6 +5,9 @@ import ReactModal from "react-modal";
 import md5 from "md5";
 
 import ModalBox from "./modal";
+import Character from "./character";
+
+const API = "https://gateway.marvel.com/v1/public/characters/";
 
 /*
 Black Widow 1009189, Captain Marvel 1010338, Medusa 1009438, Ms. Marvel 1017577,
@@ -17,24 +20,20 @@ const ts = Date.now();
 const hash = md5(ts + privateKey + publicKey);
 
 const opts = `1009215`; // whatever parameters you want, e.g., `characters/1009215`.
-
-const url = `https://gateway.marvel.com/v1/public/characters/${opts}?apikey=${
+/* const url = `https://gateway.marvel.com/v1/public/characters/${opts}?apikey=${
   publicKey
 }&hash=${hash}&ts=${ts}`; // putting it all together
-
+ */
 const character = [];
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      showModal: false,
-      id: "1009189",
+      query: "",
       character: []
     };
-    /* this.handleOpenModal = this.handleOpenModal.bind(this); */
-    this.getInfo = this.getInfo.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleUpdateQuery = this.handleUpdateQuery.bind(this);
   }
 
   setStateAsync(state) {
@@ -43,32 +42,30 @@ class App extends Component {
     });
   }
 
-  /*  handleOpenModal() {
-    this.setState({ showModal: true });
-    console.log("Show Modal!");
-  }
- */
-  handleCloseModal() {
-    this.setState({ showModal: false });
-    console.log("Close Modal");
-  }
-
-  async getInfo() {
+  //Callback from Child ChangeTheme Component
+  async handleUpdateQuery(query) {
     character.length = 0;
-    this.setStateAsync({
-      character: character,
-      loading: true
+    console.log(this.state);
+
+    await this.setStateAsync({
+      query: query,
+      character: character
     });
 
-    const res = await fetch(url);
+    const res = await fetch(
+      API +
+        `${this.state.query}` +
+        `?apikey=${publicKey}` +
+        `&hash=${hash}` +
+        `&ts=${ts}`
+    );
+
     const { data } = await res.json();
     console.log(data.results["0"]);
     const results = data.results["0"];
-
     await this.setStateAsync({
       character: results,
-      loading: false,
-      showModal: true
+      loading: false
     });
     console.log(this.state);
   }
@@ -77,110 +74,43 @@ class App extends Component {
     return (
       <div className="panels">
         {/*  PANEL ONE */}
-        <div className="panel panel1">
-          <p>Hey</p>
-
-          <button
-            onClick={() => {
-              this.getInfo();
-            }}
-          >
-            Let's
-          </button>
-          <p>Dance</p>
-        </div>
-        <ReactModal
-          isOpen={this.state.showModal}
-          contentLabel="onRequestClose Example"
-          onRequestClose={this.handleCloseModal}
-          shouldCloseOnOverlayClick={true}
-        >
-          <ModalBox character={this.state.character} />
-        </ReactModal>
-
+        <Character
+          character={character}
+          onClick={this.handleUpdateQuery.bind(this)}
+        />
         {/*  PANEL TWO */}
-        <div className="panel panel2">
-          <p>Hey</p>
-
-          <button
-            onClick={() => {
-              this.getInfo();
-            }}
-          >
-            Let's
-          </button>
-          <p>Dance</p>
-        </div>
-
+        <Character
+          character={character}
+          onClick={this.handleUpdateQuery.bind(this)}
+        />
         {/*  PANEL THREE */}
-        <div className="panel panel3">
-          <p>Hey</p>
-
-          <button
-            onClick={() => {
-              this.getInfo();
-            }}
-          >
-            Let's
-          </button>
-          <p>Dance</p>
-        </div>
-
+        <Character
+          character={character}
+          onClick={this.handleUpdateQuery.bind(this)}
+        />
         {/*  PANEL FOUR */}
-        <div className="panel panel4">
-          <p>Hey</p>
-
-          <button
-            onClick={() => {
-              this.getInfo();
-            }}
-          >
-            Let's
-          </button>
-          <p>Dance</p>
-        </div>
+        <Character
+          character={character}
+          onClick={this.handleUpdateQuery.bind(this)}
+        />
 
         {/*  PANEL FIVE */}
-        <div className="panel panel5">
-          <p>Hey</p>
-
-          <button
-            onClick={() => {
-              this.getInfo();
-            }}
-          >
-            Let's
-          </button>
-          <p>Dance</p>
-        </div>
+        <Character
+          character={character}
+          onClick={this.handleUpdateQuery.bind(this)}
+        />
 
         {/*  PANEL SIX */}
-        <div className="panel panel6">
-          <p>Hey</p>
-
-          <button
-            onClick={() => {
-              this.getInfo();
-            }}
-          >
-            Let's
-          </button>
-          <p>Dance</p>
-        </div>
+        <Character
+          character={character}
+          onClick={this.handleUpdateQuery.bind(this)}
+        />
 
         {/*  PANEL SEVEN */}
-        <div className="panel panel7">
-          <p>Hey</p>
-
-          <button
-            onClick={() => {
-              this.getInfo();
-            }}
-          >
-            Let's
-          </button>
-          <p>Dance</p>
-        </div>
+        <Character
+          character={character}
+          onClick={this.handleUpdateQuery.bind(this)}
+        />
       </div>
     );
   }
