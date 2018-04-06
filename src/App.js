@@ -15,25 +15,14 @@ import SheHulk from "./heroes/shehulk";
 
 const API = "https://gateway.marvel.com/v1/public/characters/";
 
-/*
-Black Widow 1009189, Captain Marvel 1010338, Medusa 1009438, Ms. Marvel 1017577,
- Scarlet Witch1009562, She-Hulk 1017111, Storm 1009629
- */
-
 const publicKey = `42ff63aab01f707692556ee06f049449`;
 const privateKey = `944be6934bfd304689b561bb707cf92f09380cdc`;
 const ts = Date.now();
 const hash = md5(ts + privateKey + publicKey);
 
-const opts = `1009215`; // whatever parameters you want, e.g., `characters/1009215`.
-/* const url = `https://gateway.marvel.com/v1/public/characters/${opts}?apikey=${
-  publicKey
-}&hash=${hash}&ts=${ts}`; // putting it all together
- */
-var character = [];
-var thumbnail = [];
-
-var events = [];
+let thumbnail = [];
+let eventList = [];
+let character = [];
 
 class App extends Component {
   constructor() {
@@ -41,8 +30,8 @@ class App extends Component {
     this.state = {
       query: "",
       character: [],
-      comics: [],
-      thumbnail: ""
+      events: [],
+      thumbnail: []
     };
     this.handleUpdateQuery = this.handleUpdateQuery.bind(this);
   }
@@ -53,10 +42,12 @@ class App extends Component {
     });
   }
 
-  //Callback from Child ChangeTheme Component
+  //Callback from Each Hero Component!
   async handleUpdateQuery(query) {
+    //Clean list before doing new API Call
     character.length = 0;
-    events.length = 0;
+    eventList.length = 0;
+    thumbnail.length = 0;
 
     await this.setStateAsync({
       query: query,
@@ -75,10 +66,12 @@ class App extends Component {
 
     const results = data.results[0];
 
-    events = results.events.items;
+    eventList = results.events.items;
+    thumbnail = results.thumbnail;
     await this.setStateAsync({
       character: results,
-      events: events
+      events: eventList,
+      thumbnail: thumbnail
     });
     console.log(this.state);
   }
@@ -87,7 +80,9 @@ class App extends Component {
     /*  let { character } = this.state; */
 
     const name = this.state.character.name;
-    const comics = this.state.comics;
+    /*
+    const events = this.state.comics;
+    const th */
 
     /*  console.log(this.state.character.comics.collectionURI); */
 
@@ -97,23 +92,48 @@ class App extends Component {
         <CapMarvel
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
-          events={events}
+          events={eventList}
+          thumbnail={thumbnail}
         />
         {/*  PANEL TWO */}
-        <Medusa name={name} onClick={this.handleUpdateQuery.bind(this)} />
+        <Medusa
+          onClick={this.handleUpdateQuery.bind(this)}
+          name={name}
+          events={eventList}
+        />
         {/*  PANEL THREE */}
-        <Scarlet name={name} onClick={this.handleUpdateQuery.bind(this)} />
+        <Scarlet
+          onClick={this.handleUpdateQuery.bind(this)}
+          name={name}
+          events={eventList}
+        />
         {/*  PANEL FOUR */}
-        <MsMarvel name={name} onClick={this.handleUpdateQuery.bind(this)} />
+        <MsMarvel
+          onClick={this.handleUpdateQuery.bind(this)}
+          name={name}
+          events={eventList}
+        />
 
         {/*  PANEL FIVE */}
-        <Widow onClick={this.handleUpdateQuery.bind(this)} name={name} />
+        <Widow
+          onClick={this.handleUpdateQuery.bind(this)}
+          name={name}
+          events={eventList}
+        />
 
         {/*  PANEL SIX */}
-        <SheHulk name={name} onClick={this.handleUpdateQuery.bind(this)} />
+        <SheHulk
+          onClick={this.handleUpdateQuery.bind(this)}
+          name={name}
+          events={eventList}
+        />
 
         {/*  PANEL SEVEN */}
-        <Storm name={name} onClick={this.handleUpdateQuery.bind(this)} />
+        <Storm
+          onClick={this.handleUpdateQuery.bind(this)}
+          name={name}
+          events={eventList}
+        />
       </div>
     );
   }
