@@ -51,8 +51,8 @@ export default class Storm extends Component {
     return (
       <React.Fragment>
         <div className="panel panel6">
-          <button className="more" value="1009629" onClick={this.handleQuery}>
-            More
+          <button className="mor" value="1009629" onClick={this.handleQuery}>
+            Womens
           </button>
 
           <ReactModal

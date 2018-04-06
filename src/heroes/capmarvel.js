@@ -47,13 +47,13 @@ export default class CapMarvel extends Component {
     const name = character.name;
     const modified = character.modified;
     */
-    const comics = this.props.comics;
-    console.log(comics);
-    var listComics = comics.map(comic => {
+    const events = this.props.events;
+    console.log(events);
+    var listEvents = events.map(eve => {
       return (
         <ul>
-          <li key={comic.name} />
-          {comic.name}
+          <li key={eve.name} />
+          {eve.name}
         </ul>
       );
     });
@@ -62,7 +62,7 @@ export default class CapMarvel extends Component {
       <React.Fragment>
         <div className="panel panel1">
           <button className="more" value="1010338" onClick={this.handleQuery}>
-            More
+            M
           </button>
 
           <ReactModal
@@ -70,9 +70,10 @@ export default class CapMarvel extends Component {
             contentLabel="onRequestClose Example"
             onRequestClose={this.handleCloseModal}
             shouldCloseOnOverlayClick={true}
+            className="modalBox"
           >
             <div> {this.props.name}</div>
-            {listComics}
+            {listEvents}
             {/* <ModalBox character={this.props} /> */}
           </ReactModal>
         </div>

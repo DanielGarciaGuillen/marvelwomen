@@ -52,7 +52,7 @@ export default class MsMarvel extends Component {
       <React.Fragment>
         <div className="panel panel4">
           <button className="more" value="1017577" onClick={this.handleQuery}>
-            More
+            V
           </button>
 
           <ReactModal

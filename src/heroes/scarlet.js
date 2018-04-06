@@ -52,7 +52,7 @@ export default class Scarlet extends Component {
       <React.Fragment>
         <div className="panel panel3">
           <button className="more" value="1009562" onClick={this.handleQuery}>
-            More
+            R
           </button>
 
           <ReactModal

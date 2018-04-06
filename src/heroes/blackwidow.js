@@ -64,7 +64,7 @@ export default class Widow extends Component {
       <React.Fragment>
         <div className="panel panel5">
           <button className="more" value="1009189" onClick={this.handleQuery}>
-            More
+            E
           </button>
 
           <ReactModal

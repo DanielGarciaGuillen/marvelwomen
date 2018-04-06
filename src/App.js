@@ -31,8 +31,9 @@ const opts = `1009215`; // whatever parameters you want, e.g., `characters/10092
 }&hash=${hash}&ts=${ts}`; // putting it all together
  */
 var character = [];
+var thumbnail = [];
 
-var comics = [];
+var events = [];
 
 class App extends Component {
   constructor() {
@@ -40,7 +41,8 @@ class App extends Component {
     this.state = {
       query: "",
       character: [],
-      comics: []
+      comics: [],
+      thumbnail: ""
     };
     this.handleUpdateQuery = this.handleUpdateQuery.bind(this);
   }
@@ -54,7 +56,7 @@ class App extends Component {
   //Callback from Child ChangeTheme Component
   async handleUpdateQuery(query) {
     character.length = 0;
-    comics.length = 0;
+    events.length = 0;
 
     await this.setStateAsync({
       query: query,
@@ -72,12 +74,11 @@ class App extends Component {
     const { data } = await res.json();
 
     const results = data.results[0];
-    console.log(results);
-    console.log(results.comics.items);
-    comics = results.comics.items;
+
+    events = results.events.items;
     await this.setStateAsync({
       character: results,
-      comics: comics
+      events: events
     });
     console.log(this.state);
   }
@@ -96,7 +97,7 @@ class App extends Component {
         <CapMarvel
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
-          comics={comics}
+          events={events}
         />
         {/*  PANEL TWO */}
         <Medusa name={name} onClick={this.handleUpdateQuery.bind(this)} />

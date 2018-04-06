@@ -52,7 +52,7 @@ export default class SheHulk extends Component {
       <React.Fragment>
         <div className="panel panel7">
           <button className="more" value="1017111" onClick={this.handleQuery}>
-            More
+            L
           </button>
 
           <ReactModal

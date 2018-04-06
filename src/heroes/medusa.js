@@ -52,7 +52,7 @@ export default class Medusa extends Component {
       <React.Fragment>
         <div className="panel panel2">
           <button className="more" value="1009438" onClick={this.handleQuery}>
-            More
+            A
           </button>
 
           <ReactModal
