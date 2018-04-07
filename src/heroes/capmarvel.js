@@ -3,10 +3,7 @@ import React, { Component } from "react";
 import "../App.css";
 import ReactModal from "react-modal";
 
-let id = ""; // whatever parameters you want, e.g., `characters/1009215`.
 var query = "";
-
-const character = [];
 
 export default class CapMarvel extends Component {
   constructor() {
@@ -42,20 +39,13 @@ export default class CapMarvel extends Component {
     onClick(query);
   }
   render() {
-    console.log(this.props);
-    /*  console.log(character.name);
-    const name = character.name;
-    const modified = character.modified;
-    */
     const events = this.props.events;
-    console.log(events);
+
+    const image = this.props.thumbnail.path + "/portrait_incredible.jpg";
+    console.log(image);
+
     var listEvents = events.map(eve => {
-      return (
-        <ul>
-          <li key={eve.name} />
-          {eve.name}
-        </ul>
-      );
+      return <li key={eve.name}>{eve.name}</li>;
     });
 
     return (
@@ -70,11 +60,22 @@ export default class CapMarvel extends Component {
             contentLabel="onRequestClose Example"
             onRequestClose={this.handleCloseModal}
             shouldCloseOnOverlayClick={true}
-            className="modalBox"
+            className="Modal"
+            overlayClassName="Overlay"
           >
-            <div> {this.props.name}</div>
-            {listEvents}
-            {/* <ModalBox character={this.props} /> */}
+            <div className="modalBox">
+              <button className="escapeButton" onClick={this.handleCloseModal}>
+                Close Modal
+              </button>
+
+              <img
+                className="characterImage"
+                src={image}
+                alt="characterImage"
+              />
+              {this.props.name}
+              <ul className="eventList">{listEvents}</ul>
+            </div>
           </ReactModal>
         </div>
       </React.Fragment>

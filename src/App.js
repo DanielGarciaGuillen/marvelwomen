@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 
 import "./App.css";
-import ReactModal from "react-modal";
+
 import md5 from "md5";
 
-import ModalBox from "./modal";
 import Widow from "./heroes/blackwidow";
 import CapMarvel from "./heroes/capmarvel";
 import Medusa from "./heroes/medusa";
@@ -77,15 +76,7 @@ class App extends Component {
   }
 
   render() {
-    /*  let { character } = this.state; */
-
     const name = this.state.character.name;
-    /*
-    const events = this.state.comics;
-    const th */
-
-    /*  console.log(this.state.character.comics.collectionURI); */
-
     return (
       <div className="panels">
         {/*  PANEL ONE */}
@@ -100,12 +91,14 @@ class App extends Component {
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
           events={eventList}
+          thumbnail={thumbnail}
         />
         {/*  PANEL THREE */}
         <Scarlet
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
           events={eventList}
+          thumbnail={thumbnail}
         />
         {/*  PANEL FOUR */}
         <MsMarvel

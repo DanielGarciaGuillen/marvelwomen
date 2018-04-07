@@ -129,9 +129,12 @@ body {
   font-weight: 700;
   font-family: "IBM Plex Sans", sans-serif;
   background-color: #f0141e;
-  opacity: 0.8;
+  opacity: 0.78;
+  text-decoration: none;
 }
-
+button:focus {
+  outline: 0;
+}
 .more:hover {
   opacity: 1;
 }
@@ -150,6 +153,7 @@ body {
   background-color: #f0141e;
   font-family: "IBM Plex Sans", sans-serif;
   opacity: 0.8;
+  text-decoration: none;
 }
 .mor:hover {
   opacity: 1;
@@ -158,14 +162,94 @@ body {
 .modalBox {
   display: grid;
   min-height: 70vh;
-  grid-template-columns: 150px 950px;
-  grid-template-rows: 150px 60px auto;
+  grid-template-columns: 1fr 8fr;
+  grid-template-rows: 200px 60px 500px;
   grid-row-gap: 10px;
   grid-template-areas:
-    "headerL headerM"
-    "frontL frontM"
-    "containerL containerM";
+    "escape picture"
+    "character name"
+    "event eventList";
   background-color: #fff;
-  font-family: "Catamaran", sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   max-width: 100vw;
+  justify-content: center;
+  align-content: center;
+}
+
+.escapeButton {
+  grid-area: escape;
+}
+.characterImage {
+  grid-area: picture;
+  margin: 0 auto;
+}
+.eventList {
+  grid-area: eventList;
+}
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+button,
+button:visited,
+button:hover,
+button:active {
+  text-decoration: none;
+}
+.Modal {
+  position: absolute;
+  top: 40px;
+  left: 300px;
+  right: 300px;
+  /* bottom: 40px; */
+  background-color: white;
+  opacity: 1;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f0141e;
+  opacity: 0.9;
+}
+.ReactModal__Overlay {
+  -webkit-perspective: 600;
+  perspective: 600;
+  opacity: 0;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transition: opacity 150ms ease-out;
+}
+
+.ReactModal__Content {
+  -webkit-transform: scale(0.5) rotateX(-30deg);
+  transform: scale(0.5) rotateX(-30deg);
+}
+
+.ReactModal__Content--after-open {
+  -webkit-transform: scale(1) rotateX(0deg);
+  transform: scale(1) rotateX(0deg);
+  transition: all 150ms ease-in;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.ReactModal__Content--before-close {
+  -webkit-transform: scale(0.5) rotateX(30deg);
+  transform: scale(0.5) rotateX(30deg);
+  transition: all 150ms ease-in;
+}
+
+.ReactModal__Body--open,
+.ReactModal__Html--open {
+  overflow: hidden;
 }
