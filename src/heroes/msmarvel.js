@@ -42,11 +42,14 @@ export default class MsMarvel extends Component {
     onClick(query);
   }
   render() {
-    console.log(this.props);
-    /*  console.log(character.name);
-    const name = character.name;
-    const modified = character.modified;
-    const id = character.id; */
+    const events = this.props.events;
+
+    const image = this.props.thumbnail.path + "/portrait_incredible.jpg";
+    console.log(image);
+
+    var listEvents = events.map(eve => {
+      return <li key={eve.name}>{eve.name}</li>;
+    });
 
     return (
       <React.Fragment>
@@ -54,16 +57,36 @@ export default class MsMarvel extends Component {
           <button className="more" value="1017577" onClick={this.handleQuery}>
             V
           </button>
-
           <ReactModal
             isOpen={this.state.showModal}
             contentLabel="onRequestClose Example"
             onRequestClose={this.handleCloseModal}
             shouldCloseOnOverlayClick={true}
+            className="Modal"
+            overlayClassName="Overlay"
           >
-            <div> {this.props.name}</div>
+            <div className="modalBox">
+              <button className="escapeButton" onClick={this.handleCloseModal}>
+                X
+              </button>
 
-            {/* <ModalBox character={this.props} /> */}
+              <img
+                className="characterImage"
+                src={image}
+                alt="characterImage"
+              />
+              <h2 className="nameCharacter">{this.props.name}</h2>
+              <h3 className="event">
+                {" "}
+                Events{/* <h4>
+                  {" "}
+                  Events in the Marvel Universe represent big, universe-changing
+                  storyline months on history
+                </h4>{" "} */}
+              </h3>
+
+              <ol className="eventList">{listEvents}</ol>
+            </div>
           </ReactModal>
         </div>
       </React.Fragment>

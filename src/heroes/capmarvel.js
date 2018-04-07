@@ -50,7 +50,7 @@ export default class CapMarvel extends Component {
 
     return (
       <React.Fragment>
-        <div className="panel panel1">
+        <div className="panel panel1 capmarvel">
           <button className="more" value="1010338" onClick={this.handleQuery}>
             M
           </button>
@@ -65,7 +65,7 @@ export default class CapMarvel extends Component {
           >
             <div className="modalBox">
               <button className="escapeButton" onClick={this.handleCloseModal}>
-                Close Modal
+                X
               </button>
 
               <img
@@ -73,8 +73,17 @@ export default class CapMarvel extends Component {
                 src={image}
                 alt="characterImage"
               />
-              {this.props.name}
-              <ul className="eventList">{listEvents}</ul>
+              <h2 className="nameCharacter">{this.props.name}</h2>
+              <h3 className="event">
+                {" "}
+                Events{/* <h4>
+                  {" "}
+                  Events in the Marvel Universe represent big, universe-changing
+                  storyline months on history
+                </h4>{" "} */}
+              </h3>
+
+              <ol className="eventList">{listEvents}</ol>
             </div>
           </ReactModal>
         </div>

@@ -105,6 +105,7 @@ class App extends Component {
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
           events={eventList}
+          thumbnail={thumbnail}
         />
 
         {/*  PANEL FIVE */}
@@ -112,6 +113,7 @@ class App extends Component {
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
           events={eventList}
+          thumbnail={thumbnail}
         />
 
         {/*  PANEL SIX */}
@@ -119,6 +121,7 @@ class App extends Component {
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
           events={eventList}
+          thumbnail={thumbnail}
         />
 
         {/*  PANEL SEVEN */}
@@ -126,6 +129,7 @@ class App extends Component {
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
           events={eventList}
+          thumbnail={thumbnail}
         />
       </div>
     );

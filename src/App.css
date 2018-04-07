@@ -162,29 +162,55 @@ button:focus {
 .modalBox {
   display: grid;
   min-height: 70vh;
-  grid-template-columns: 1fr 8fr;
-  grid-template-rows: 200px 60px 500px;
-  grid-row-gap: 10px;
+  grid-template-columns: 1fr 3fr 5fr;
+  grid-template-rows: 30px 250px 400px;
+  grid-row-gap: 5px;
   grid-template-areas:
-    "escape picture"
-    "character name"
-    "event eventList";
+    "escape escape1 escape2"
+    "none picture name"
+    "none1 event eventList";
   background-color: #fff;
   font-family: "IBM Plex Sans", sans-serif;
   max-width: 100vw;
+  justify-items: center;
+  align-items: center;
   justify-content: center;
   align-content: center;
 }
 
 .escapeButton {
   grid-area: escape;
+  text-decoration: none;
+  background: white;
+  border: none;
+  border-radius: 122px;
+  background: red;
+  color: white;
+  width: 20px;
+  height: 20px;
+  justify-self: start;
+  margin: 10px;
 }
 .characterImage {
   grid-area: picture;
   margin: 0 auto;
+  width: 150px;
+  border-radius: 3px;
+}
+.event {
+  grid-area: event;
+  align-self: start;
+}
+.nameCharacter {
+  grid-area: name;
 }
 .eventList {
   grid-area: eventList;
+  display: flex;
+  flex-direction: column;
+  list-style-type: upper-roman;
+  align-self: start;
+  justify-self: start;
 }
 a,
 a:visited,
@@ -201,11 +227,22 @@ button:active {
 .Modal {
   position: absolute;
   top: 40px;
-  left: 300px;
-  right: 300px;
+  left: 400px;
+  right: 400px;
   /* bottom: 40px; */
   background-color: white;
   opacity: 1;
+  border-radius: 10px;
+}
+.capmarvel:hover {
+  transform: translate(0, -5px);
+  -webkit-transform: translate(0, -5px);
+  -webkit-box-shadow: 0px 10px 10px 0px rgba(207, 210, 205, 0.8);
+  -moz-box-shadow: 0px 10px 10px 0px rgba(207, 210, 205, 0.8);
+  box-shadow: 0px 10px 10px 0px rgba(207, 210, 205, 0.8);
+  -ms-transform: scale(1.1, 1.1); /* IE 9 */
+  -webkit-transform: scale(1.1, 1.1); /* Safari */
+  transform: scale(1.1, 1.1);
 }
 
 .Overlay {
