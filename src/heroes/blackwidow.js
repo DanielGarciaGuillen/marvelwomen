@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import ReactModal from "react-modal";
 
 import "../App.css";
-import ReactModal from "react-modal";
+import modal from "./modal/modal";
 
 var query = "";
 
@@ -40,7 +41,6 @@ export default class Widow extends Component {
   }
   render() {
     const events = this.props.events;
-
     const image = this.props.thumbnail.path + "/portrait_incredible.jpg";
 
     var listEvents = events.map(eve => {

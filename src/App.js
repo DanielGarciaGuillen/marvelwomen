@@ -1,8 +1,7 @@
 import React, { Component } from "react";
+import md5 from "md5";
 
 import "./App.css";
-
-import md5 from "md5";
 
 import Widow from "./heroes/blackwidow";
 import CapMarvel from "./heroes/capmarvel";
@@ -13,7 +12,6 @@ import Scarlet from "./heroes/scarlet";
 import SheHulk from "./heroes/shehulk";
 
 const API = "https://gateway.marvel.com/v1/public/characters/";
-
 const publicKey = `42ff63aab01f707692556ee06f049449`;
 const privateKey = `944be6934bfd304689b561bb707cf92f09380cdc`;
 const ts = Date.now();
@@ -62,7 +60,6 @@ class App extends Component {
     );
 
     const { data } = await res.json();
-
     const results = data.results[0];
 
     eventList = results.events.items;
