@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import ReactModal from "react-modal";
 
 import "../App.css";
-import modal from "./modal/modal";
 
 var query = "";
 
