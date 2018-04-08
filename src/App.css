@@ -151,7 +151,7 @@ button:focus {
 }
 .nameCharacter {
   grid-area: name;
-  font-size: 55px;
+  font-size: 45px;
 }
 .eventList {
   grid-area: eventList;
@@ -175,7 +175,7 @@ button:active {
 }
 .Modal {
   position: absolute;
-  top: 80px;
+  top: 20px;
   left: 470px;
   right: 470px;
   /* bottom: 40px; */
