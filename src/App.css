@@ -1,21 +1,3 @@
-html {
-  box-sizing: border-box;
-  background: #ffc600;
-  font-family: "helvetica neue";
-  font-size: 20px;
-  font-weight: 200;
-}
-
-body {
-  margin: 0;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
 .panels {
   min-height: 100vh;
   overflow: hidden;
@@ -28,10 +10,8 @@ body {
   color: white;
   text-align: center;
   align-items: center;
-  /* Safari transitionend event.propertyName === flex */
-  /* Chrome + FF transitionend event.propertyName === flex-grow */
-  transition: font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
-    flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11), background 0.2s;
+  transition: font-size 0.2s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+    flex 0.2s cubic-bezier(0.61, -0.19, 0.7, -0.11), background 0.2s;
   font-size: 20px;
   background-size: cover;
   background-position: center;
@@ -39,6 +19,11 @@ body {
   justify-content: center;
   display: flex;
   flex-direction: column;
+  transition: all 0.2s ease-in-out;
+}
+
+.panel:hover {
+  transform: scale(1.1);
 }
 
 .panel1 {
@@ -55,8 +40,6 @@ body {
 
 .panel4 {
   background-image: url(https://orig00.deviantart.net/56c0/f/2013/312/a/a/all_new_ms_marvel_by_jprart-d6tindx.jpg);
-  /*  background-image: url(https://i.annihil.us/u/prod/marvel/i/mg/6/30/537ba61b764b4.jpg);
-   */
 }
 
 .panel5 {
@@ -71,72 +54,31 @@ body {
   background-image: url(https://i.pinimg.com/564x/8e/6f/89/8e6f8914695b17afa1411c7b87f5958a.jpg);
 }
 
-/* Flex Items */
-/*
-.panel > * {
-  margin: 0;
-  width: 100%;
-  transition: transform 0.5s;
-  flex: 1 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.panel > *:first-child {
-  transform: translateY(-100%);
-}
-
-.panel.open-active > *:first-child {
-  transform: translateY(0);
-}
-
-.panel > *:last-child {
-  transform: translateY(100%);
-}
-
-.panel.open-active > *:last-child {
-  transform: translateY(0);
-} */
-
-.panel p {
-  text-transform: uppercase;
-  font-family: "Amatic SC", cursive;
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
-  font-size: 2em;
-}
-/*
-.panel p:nth-child(2) {
-  font-size: 4em;
-}
-
-.panel.open {
-  flex: 5;
-  font-size: 40px;
-}
- */
-
 .more {
   display: block;
-  height: 90px;
-  width: 90px;
+  height: 110px;
+  width: 110px;
   text-transform: uppercase;
   border-radius: 50%;
   border: 4px solid white;
   color: white;
   font-size: 68px;
-  margin-top: 615px;
+  margin-top: 670px;
   font-weight: 700;
   font-family: "IBM Plex Sans", sans-serif;
   background-color: #f0141e;
   opacity: 0.78;
   text-decoration: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 button:focus {
   outline: 0;
 }
 .more:hover {
   opacity: 1;
+  transform: scale(1.1);
 }
 
 .mor {
@@ -161,9 +103,9 @@ button:focus {
 
 .modalBox {
   display: grid;
-  min-height: 70vh;
-  grid-template-columns: 1fr 3fr 5fr;
-  grid-template-rows: 30px 250px 400px;
+
+  grid-template-columns: 1fr 3fr 8fr;
+  grid-template-rows: 30px 230px auto;
   grid-row-gap: 5px;
   grid-template-areas:
     "escape escape1 escape2"
@@ -184,12 +126,17 @@ button:focus {
   background: white;
   border: none;
   border-radius: 122px;
-  background: red;
+  background: #ff5c5c;
   color: white;
   width: 20px;
   height: 20px;
   justify-self: start;
   margin: 10px;
+  opacity: 0.8;
+}
+
+.escapeButton:hover {
+  opacity: 1;
 }
 .characterImage {
   grid-area: picture;
@@ -203,6 +150,7 @@ button:focus {
 }
 .nameCharacter {
   grid-area: name;
+  font-size: 55px;
 }
 .eventList {
   grid-area: eventList;
@@ -226,23 +174,19 @@ button:active {
 }
 .Modal {
   position: absolute;
-  top: 40px;
-  left: 400px;
-  right: 400px;
+  top: 80px;
+  left: 470px;
+  right: 470px;
   /* bottom: 40px; */
   background-color: white;
   opacity: 1;
   border-radius: 10px;
 }
-.capmarvel:hover {
-  transform: translate(0, -5px);
-  -webkit-transform: translate(0, -5px);
-  -webkit-box-shadow: 0px 10px 10px 0px rgba(207, 210, 205, 0.8);
-  -moz-box-shadow: 0px 10px 10px 0px rgba(207, 210, 205, 0.8);
-  box-shadow: 0px 10px 10px 0px rgba(207, 210, 205, 0.8);
-  -ms-transform: scale(1.1, 1.1); /* IE 9 */
-  -webkit-transform: scale(1.1, 1.1); /* Safari */
-  transform: scale(1.1, 1.1);
+
+.panel:hover {
+  box-shadow: inset 0px 0px 120px rgba(0, 0, 0, 1.9);
+  -moz-box-shadow: inset 0px 0px 120px rgba(0, 0, 0, 1.9);
+  -webkit-box-shadow: inset 0px 0px 120px rgba(0, 0, 0, 1.9);
 }
 
 .Overlay {
@@ -262,7 +206,7 @@ button:active {
 
 .ReactModal__Overlay--after-open {
   opacity: 0.9;
-  transition: opacity 150ms ease-out;
+  transition: opacity 250ms ease-out;
 }
 
 .ReactModal__Content {
@@ -273,7 +217,7 @@ button:active {
 .ReactModal__Content--after-open {
   -webkit-transform: scale(1) rotateX(0deg);
   transform: scale(1) rotateX(0deg);
-  transition: all 150ms ease-in;
+  transition: all 250ms ease-in;
 }
 
 .ReactModal__Overlay--before-close {
@@ -283,7 +227,7 @@ button:active {
 .ReactModal__Content--before-close {
   -webkit-transform: scale(0.5) rotateX(30deg);
   transform: scale(0.5) rotateX(30deg);
-  transition: all 150ms ease-in;
+  transition: all 250ms ease-in;
 }
 
 .ReactModal__Body--open,

@@ -74,14 +74,7 @@ export default class CapMarvel extends Component {
                 alt="characterImage"
               />
               <h2 className="nameCharacter">{this.props.name}</h2>
-              <h3 className="event">
-                {" "}
-                Events{/* <h4>
-                  {" "}
-                  Events in the Marvel Universe represent big, universe-changing
-                  storyline months on history
-                </h4>{" "} */}
-              </h3>
+              <h3 className="event">Events</h3>
 
               <ol className="eventList">{listEvents}</ol>
             </div>

@@ -3,10 +3,7 @@ import React, { Component } from "react";
 import "../App.css";
 import ReactModal from "react-modal";
 
-let id = ""; // whatever parameters you want, e.g., `characters/1009215`.
 var query = "";
-
-const character = [];
 
 export default class Widow extends Component {
   constructor() {
@@ -42,24 +39,14 @@ export default class Widow extends Component {
     onClick(query);
   }
   render() {
-    console.log(this.props);
-    /*  console.log(character.name);
-    const name = character.name;
-    const modified = character.modified;
-    */
-    const comics = this.props.comics;
-    console.log(comics);
-    /*  listJobs = jobsArraySplit.map(job => {
-      return (
-        <ListJobs key={job[0]}>
-          <JobTitle>{job[0]}</JobTitle>
-          <Apply target="_blank" href={job[1]}>
-            Apply
-          </Apply>
-        </ListJobs>
-      );
-    }); */
+    const events = this.props.events;
 
+    const image = this.props.thumbnail.path + "/portrait_incredible.jpg";
+    console.log(image);
+
+    var listEvents = events.map(eve => {
+      return <li key={eve.name}>{eve.name}</li>;
+    });
     return (
       <React.Fragment>
         <div className="panel panel5">
@@ -72,10 +59,24 @@ export default class Widow extends Component {
             contentLabel="onRequestClose Example"
             onRequestClose={this.handleCloseModal}
             shouldCloseOnOverlayClick={true}
+            className="Modal"
+            overlayClassName="Overlay"
           >
-            <div> {this.props.name}</div>
+            <div className="modalBox">
+              <button className="escapeButton" onClick={this.handleCloseModal}>
+                X
+              </button>
 
-            {/* <ModalBox character={this.props} /> */}
+              <img
+                className="characterImage"
+                src={image}
+                alt="characterImage"
+              />
+              <h2 className="nameCharacter">{this.props.name}</h2>
+              <h3 className="event">Events</h3>
+
+              <ol className="eventList">{listEvents}</ol>
+            </div>
           </ReactModal>
         </div>
       </React.Fragment>
