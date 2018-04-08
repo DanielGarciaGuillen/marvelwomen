@@ -50,7 +50,7 @@ export default class CapMarvel extends Component {
 
     return (
       <React.Fragment>
-        <div className="panel panel1 capmarvel">
+        <div className="panel panel1">
           <button className="more" value="1010338" onClick={this.handleQuery}>
             M
           </button>

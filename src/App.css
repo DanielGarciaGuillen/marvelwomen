@@ -23,7 +23,7 @@
 }
 
 .panel:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .panel1 {
@@ -56,8 +56,8 @@
 
 .more {
   display: block;
-  height: 110px;
-  width: 110px;
+  height: 100px;
+  width: 100px;
   text-transform: uppercase;
   border-radius: 50%;
   border: 4px solid white;
@@ -78,14 +78,14 @@ button:focus {
 }
 .more:hover {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .mor {
   display: block;
-  height: 110px;
+  height: 100px;
   text-transform: uppercase;
-  width: 110px;
+  width: 100px;
   border-radius: 50%;
   border: 4px solid white;
   color: white;
@@ -99,7 +99,7 @@ button:focus {
 }
 .mor:hover {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .modalBox {
