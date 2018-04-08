@@ -42,7 +42,6 @@ export default class SheHulk extends Component {
     const events = this.props.events;
 
     const image = this.props.thumbnail.path + "/portrait_incredible.jpg";
-    console.log(image);
 
     if (events.length === 0) {
       var listEvents = "No events related to this Character";

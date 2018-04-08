@@ -42,7 +42,6 @@ export default class Storm extends Component {
     const events = this.props.events;
 
     const image = this.props.thumbnail.path + "/portrait_incredible.jpg";
-    console.log(image);
 
     var listEvents = events.map(eve => {
       return <li key={eve.name}>{eve.name}</li>;
