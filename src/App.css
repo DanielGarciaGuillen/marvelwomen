@@ -240,12 +240,50 @@ button:active {
   .panels {
     display: block;
   }
-
   .mor {
     margin-top: 530px;
   }
-
   .more {
     margin-top: 530px;
+  }
+  .Modal {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    right: 0px;
+    background-color: white;
+    opacity: 1;
+    border-radius: 10px;
+  }
+
+  .characterImage {
+    grid-area: picture;
+    margin: 0 auto;
+    width: 50px;
+    border-radius: 3px;
+  }
+  .event {
+    grid-area: event;
+    align-self: start;
+  }
+  .nameCharacter {
+    grid-area: name;
+    font-size: 25px;
+  }
+  .eventList {
+    grid-area: eventList;
+    display: flex;
+    flex-direction: column;
+    list-style-type: upper-roman;
+    align-self: start;
+    justify-self: start;
+  }
+
+  .modalBox {
+    display: grid;
+    grid-template-columns: 1fr 3fr 8fr;
+    grid-template-rows: 25px 100px auto;
+    grid-row-gap: 5px;
+    grid-template-areas: "escape escape1 escape2" "none picture name" "none1 event eventList";
   }
 }
