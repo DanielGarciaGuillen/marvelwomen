@@ -257,26 +257,11 @@ button:active {
   }
 
   .characterImage {
-    grid-area: picture;
-    margin: 0 auto;
-    width: 50px;
-    border-radius: 3px;
+    width: 80px;
   }
-  .event {
-    grid-area: event;
-    align-self: start;
-  }
+
   .nameCharacter {
-    grid-area: name;
     font-size: 25px;
-  }
-  .eventList {
-    grid-area: eventList;
-    display: flex;
-    flex-direction: column;
-    list-style-type: upper-roman;
-    align-self: start;
-    justify-self: start;
   }
 
   .modalBox {
