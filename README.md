@@ -10,11 +10,9 @@ Press F11 to check it out on full screen mode!
 
 ## Demo
 
-## [Marvel Women](https://dedd.co)
+## [Marvel Women](https://brave-stallman-87a7d1.netlify.com/)
 
-![DEsign.!.](/src/images/test.png?raw=true "Dedd")
-
-
+![Marvel Women](/src/images/marvel.png?raw=true "Marvel")
 
 ## Built With
 
