@@ -12,7 +12,7 @@ Press F11 to check it out on full screen mode!
 
 ## [Marvel Women](https://brave-stallman-87a7d1.netlify.com/)
 
-![Marvel Women](/src/images/marvel.png?raw=true "Marvel")
+![Marvel Women](/src/images/marvel.jpg?raw=true "Marvel")
 
 ## Built With
 
