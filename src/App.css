@@ -79,6 +79,7 @@ button:focus {
 .more:hover {
   opacity: 1;
   transform: scale(1.05);
+  cursor: crosshair;
 }
 
 .mor {
@@ -234,4 +235,17 @@ button:active {
 .ReactModal__Body--open,
 .ReactModal__Html--open {
   overflow: hidden;
+}
+@media only screen and (max-width: 768px) {
+  .panels {
+    display: block;
+  }
+
+  .mor {
+    margin-top: 530px;
+  }
+
+  .more {
+    margin-top: 530px;
+  }
 }
