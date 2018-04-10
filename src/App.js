@@ -19,14 +19,15 @@ const hash = md5(ts + privateKey + publicKey);
 
 let thumbnail = [];
 let eventList = [];
-let character = [];
+
+let name = "";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       query: "",
-      character: [],
+      name: "",
       events: [],
       thumbnail: []
     };
@@ -42,13 +43,12 @@ class App extends Component {
   //Callback from Each Hero Component!
   async handleUpdateQuery(query) {
     //Clean list before doing new API Call
-    character.length = 0;
+
     eventList.length = 0;
     thumbnail.length = 0;
 
     await this.setStateAsync({
-      query: query,
-      character: character
+      query: query
     });
 
     const res = await fetch(
@@ -61,46 +61,46 @@ class App extends Component {
 
     const { data } = await res.json();
     const results = data.results[0];
-
+    name = results.name;
     eventList = results.events.items;
     thumbnail = results.thumbnail;
     await this.setStateAsync({
-      character: results,
+      name: name,
       events: eventList,
       thumbnail: thumbnail
     });
   }
 
   render() {
-    const name = this.state.character.name;
+    const { name, events, thumbnail } = this.state;
     return (
       <div className="panels">
         {/*  PANEL ONE */}
         <CapMarvel
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
-          events={eventList}
+          events={events}
           thumbnail={thumbnail}
         />
         {/*  PANEL TWO */}
         <Medusa
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
-          events={eventList}
+          events={events}
           thumbnail={thumbnail}
         />
         {/*  PANEL THREE */}
         <Scarlet
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
-          events={eventList}
+          events={events}
           thumbnail={thumbnail}
         />
         {/*  PANEL FOUR */}
         <MsMarvel
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
-          events={eventList}
+          events={events}
           thumbnail={thumbnail}
         />
 
@@ -108,7 +108,7 @@ class App extends Component {
         <Widow
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
-          events={eventList}
+          events={events}
           thumbnail={thumbnail}
         />
 
@@ -116,7 +116,7 @@ class App extends Component {
         <SheHulk
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
-          events={eventList}
+          events={events}
           thumbnail={thumbnail}
         />
 
@@ -124,7 +124,7 @@ class App extends Component {
         <Storm
           onClick={this.handleUpdateQuery.bind(this)}
           name={name}
-          events={eventList}
+          events={events}
           thumbnail={thumbnail}
         />
       </div>
