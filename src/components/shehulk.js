@@ -3,9 +3,9 @@ import React, { Component } from "react";
 import "../App.css";
 import ReactModal from "react-modal";
 
-var query = "";
+let query = "";
 
-export default class Storm extends Component {
+export default class SheHulk extends Component {
   constructor() {
     super();
     this.state = {
@@ -27,7 +27,6 @@ export default class Storm extends Component {
   }
 
   async handleQuery({ currentTarget }) {
-    currentTarget.preventDefault;
     query = currentTarget.value;
     await this.setStateAsync({ query: query, showModal: true });
     await this.validateTitle();
@@ -43,15 +42,19 @@ export default class Storm extends Component {
 
     const image = this.props.thumbnail.path + "/portrait_incredible.jpg";
 
-    var listEvents = events.map(eve => {
-      return <li key={eve.name}>{eve.name}</li>;
-    });
+    if (events.length === 0) {
+      var listEvents = "No events related to this Character";
+    } else {
+      listEvents = events.map(eve => {
+        return <li key={eve.name}>{eve.name}</li>;
+      });
+    }
 
     return (
       <React.Fragment>
-        <div className="panel panel6">
-          <button className="mor" value="1009629" onClick={this.handleQuery}>
-            Women
+        <div className="panel panel7">
+          <button className="more" value="1017111" onClick={this.handleQuery}>
+            L
           </button>
           <ReactModal
             isOpen={this.state.showModal}

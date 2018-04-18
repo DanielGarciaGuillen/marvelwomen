@@ -3,9 +3,9 @@ import React, { Component } from "react";
 import "../App.css";
 import ReactModal from "react-modal";
 
-var query = "";
+let query = "";
 
-export default class MsMarvel extends Component {
+export default class Scarlet extends Component {
   constructor() {
     super();
     this.state = {
@@ -27,7 +27,6 @@ export default class MsMarvel extends Component {
   }
 
   async handleQuery({ currentTarget }) {
-    currentTarget.preventDefault;
     query = currentTarget.value;
     await this.setStateAsync({ query: query, showModal: true });
     await this.validateTitle();
@@ -46,12 +45,11 @@ export default class MsMarvel extends Component {
     var listEvents = events.map(eve => {
       return <li key={eve.name}>{eve.name}</li>;
     });
-
     return (
       <React.Fragment>
-        <div className="panel panel4">
-          <button className="more" value="1017577" onClick={this.handleQuery}>
-            V
+        <div className="panel panel3">
+          <button className="more" value="1009562" onClick={this.handleQuery}>
+            R
           </button>
           <ReactModal
             isOpen={this.state.showModal}

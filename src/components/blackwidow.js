@@ -3,7 +3,7 @@ import ReactModal from "react-modal";
 
 import "../App.css";
 
-var query = "";
+let query = "";
 
 export default class Widow extends Component {
   constructor() {
@@ -27,7 +27,6 @@ export default class Widow extends Component {
   }
 
   async handleQuery({ currentTarget }) {
-    currentTarget.preventDefault;
     query = currentTarget.value;
     await this.setStateAsync({ query: query, showModal: true });
     await this.validateTitle();

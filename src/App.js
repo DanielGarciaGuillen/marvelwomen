@@ -3,24 +3,19 @@ import md5 from "md5";
 
 import "./App.css";
 
-import Widow from "./heroes/blackwidow";
-import CapMarvel from "./heroes/capmarvel";
-import Medusa from "./heroes/medusa";
-import Storm from "./heroes/storm";
-import MsMarvel from "./heroes/msmarvel";
-import Scarlet from "./heroes/scarlet";
-import SheHulk from "./heroes/shehulk";
+import Widow from "./components/blackwidow";
+import CapMarvel from "./components/capmarvel";
+import Medusa from "./components/medusa";
+import Storm from "./components/storm";
+import MsMarvel from "./components/msmarvel";
+import Scarlet from "./components/scarlet";
+import SheHulk from "./components/shehulk";
 
 const API = "https://gateway.marvel.com/v1/public/characters/";
 const publicKey = `42ff63aab01f707692556ee06f049449`;
 const privateKey = `944be6934bfd304689b561bb707cf92f09380cdc`;
 const ts = Date.now();
 const hash = md5(ts + privateKey + publicKey);
-
-let thumbnail = [];
-let eventList = [];
-
-let name = "";
 
 class App extends Component {
   constructor() {
@@ -42,11 +37,6 @@ class App extends Component {
 
   //Callback from Each Hero Component!
   async handleUpdateQuery(query) {
-    //Clean list before doing new API Call
-
-    eventList.length = 0;
-    thumbnail.length = 0;
-
     await this.setStateAsync({
       query: query
     });
@@ -61,12 +51,14 @@ class App extends Component {
 
     const { data } = await res.json();
     const results = data.results[0];
-    name = results.name;
-    eventList = results.events.items;
-    thumbnail = results.thumbnail;
+
+    //Destructuring Data
+    const { name, events: { items }, thumbnail } = results;
+
+    //Set State to variables from API Call
     await this.setStateAsync({
       name: name,
-      events: eventList,
+      events: items,
       thumbnail: thumbnail
     });
   }

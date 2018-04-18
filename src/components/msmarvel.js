@@ -3,9 +3,9 @@ import React, { Component } from "react";
 import "../App.css";
 import ReactModal from "react-modal";
 
-var query = "";
+let query = "";
 
-export default class Medusa extends Component {
+export default class MsMarvel extends Component {
   constructor() {
     super();
     this.state = {
@@ -27,7 +27,6 @@ export default class Medusa extends Component {
   }
 
   async handleQuery({ currentTarget }) {
-    currentTarget.preventDefault;
     query = currentTarget.value;
     await this.setStateAsync({ query: query, showModal: true });
     await this.validateTitle();
@@ -49,9 +48,9 @@ export default class Medusa extends Component {
 
     return (
       <React.Fragment>
-        <div className="panel panel2">
-          <button className="more" value="1009438" onClick={this.handleQuery}>
-            A
+        <div className="panel panel4">
+          <button className="more" value="1017577" onClick={this.handleQuery}>
+            V
           </button>
           <ReactModal
             isOpen={this.state.showModal}

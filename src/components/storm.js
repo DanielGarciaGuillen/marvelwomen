@@ -3,9 +3,9 @@ import React, { Component } from "react";
 import "../App.css";
 import ReactModal from "react-modal";
 
-var query = "";
+let query = "";
 
-export default class CapMarvel extends Component {
+export default class Storm extends Component {
   constructor() {
     super();
     this.state = {
@@ -27,7 +27,6 @@ export default class CapMarvel extends Component {
   }
 
   async handleQuery({ currentTarget }) {
-    currentTarget.preventDefault;
     query = currentTarget.value;
     await this.setStateAsync({ query: query, showModal: true });
     await this.validateTitle();
@@ -49,11 +48,10 @@ export default class CapMarvel extends Component {
 
     return (
       <React.Fragment>
-        <div className="panel panel1">
-          <button className="more" value="1010338" onClick={this.handleQuery}>
-            M
+        <div className="panel panel6">
+          <button className="mor" value="1009629" onClick={this.handleQuery}>
+            Women
           </button>
-
           <ReactModal
             isOpen={this.state.showModal}
             contentLabel="onRequestClose Example"

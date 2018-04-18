@@ -3,9 +3,9 @@ import React, { Component } from "react";
 import "../App.css";
 import ReactModal from "react-modal";
 
-var query = "";
+let query = "";
 
-export default class SheHulk extends Component {
+export default class CapMarvel extends Component {
   constructor() {
     super();
     this.state = {
@@ -22,12 +22,12 @@ export default class SheHulk extends Component {
       this.setState(state, resolve);
     });
   }
+
   handleCloseModal() {
     this.setState({ showModal: false });
   }
 
   async handleQuery({ currentTarget }) {
-    currentTarget.preventDefault;
     query = currentTarget.value;
     await this.setStateAsync({ query: query, showModal: true });
     await this.validateTitle();
@@ -38,25 +38,22 @@ export default class SheHulk extends Component {
     const { onClick } = this.props;
     onClick(query);
   }
+
   render() {
     const events = this.props.events;
-
     const image = this.props.thumbnail.path + "/portrait_incredible.jpg";
 
-    if (events.length === 0) {
-      var listEvents = "No events related to this Character";
-    } else {
-      listEvents = events.map(eve => {
-        return <li key={eve.name}>{eve.name}</li>;
-      });
-    }
+    var listEvents = events.map(eve => {
+      return <li key={eve.name}>{eve.name}</li>;
+    });
 
     return (
       <React.Fragment>
-        <div className="panel panel7">
-          <button className="more" value="1017111" onClick={this.handleQuery}>
-            L
+        <div className="panel panel1">
+          <button className="more" value="1010338" onClick={this.handleQuery}>
+            M
           </button>
+
           <ReactModal
             isOpen={this.state.showModal}
             contentLabel="onRequestClose Example"
