@@ -41,6 +41,7 @@ class App extends Component {
       query: query
     });
 
+    //API Call
     const res = await fetch(
       API +
         `${this.state.query}` +
@@ -49,10 +50,9 @@ class App extends Component {
         `&ts=${ts}`
     );
 
-    const { data } = await res.json();
-    const results = data.results[0];
-
-    //Destructuring Data
+    //Destructuring API Call
+    const { data: { results: [results] } } = await res.json();
+    //Destructuring Variables from API Call
     const { name, events: { items }, thumbnail } = results;
 
     //Set State to variables from API Call
@@ -64,6 +64,7 @@ class App extends Component {
   }
 
   render() {
+    //Destructuring Variables from state
     const { name, events, thumbnail } = this.state;
     return (
       <div className="panels">
