@@ -11,6 +11,16 @@ import MsMarvel from "./components/msmarvel";
 import Scarlet from "./components/scarlet";
 import SheHulk from "./components/shehulk";
 
+var characterList = [
+  { name: "Widow", id: 1009189 },
+  { name: "CapMarvel", id: 1010338 },
+  { name: "Medusa", id: 1009438 },
+  { name: "Storm", id: 1009629 },
+  { name: "MsMarvel", id: 1017577 },
+  { name: "Scarlet", id: 1009562 },
+  { name: "SheHulk", id: 1017111 }
+];
+
 const API = "https://gateway.marvel.com/v1/public/characters/";
 const publicKey = `42ff63aab01f707692556ee06f049449`;
 const privateKey = `944be6934bfd304689b561bb707cf92f09380cdc`;
