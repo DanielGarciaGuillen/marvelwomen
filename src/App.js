@@ -91,15 +91,16 @@ class App extends Component {
     charactersDivs = characterList.map(character => {
       console.log(character.name);
       return (
-        <li>
-          <div style={{ backgroundImage: `url(${character.url})` }}>
-            <h1> {character.name}</h1>
-          </div>
-        </li>
+        <div
+          className="panel"
+          style={{ backgroundImage: `url(${character.url})` }}
+        >
+          <h1> {character.name}</h1>
+        </div>
       );
     });
 
-    return <ul>{charactersDivs}</ul>;
+    return <div className="panels">{charactersDivs}</div>;
   }
 }
 
