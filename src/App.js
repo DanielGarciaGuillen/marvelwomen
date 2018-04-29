@@ -8,43 +8,49 @@ import Modal from "./components/modal";
 const characterList = [
   {
     id: 1010338,
-    url: "https://i.annihil.us/u/prod/marvel/i/mg/6/30/537ba61b764b4.jpg"
+    url: "https://i.annihil.us/u/prod/marvel/i/mg/6/30/537ba61b764b4.jpg",
+    button: "M"
   },
   {
     id: 1009438,
     url:
-      "https://pre00.deviantart.net/6c08/th/pre/i/2010/013/6/6/medusa_by_dmmontal.jpg"
+      "https://pre00.deviantart.net/6c08/th/pre/i/2010/013/6/6/medusa_by_dmmontal.jpg",
+    button: "A"
   },
   {
     id: 1009562,
     url:
-      "https://img00.deviantart.net/0286/i/2010/141/e/4/scarlet_witch___colored_by_windriderx23.jpg"
+      "https://img00.deviantart.net/0286/i/2010/141/e/4/scarlet_witch___colored_by_windriderx23.jpg",
+    button: "R"
   },
 
   {
     id: 1017577,
     url:
-      "https://orig00.deviantart.net/56c0/f/2013/312/a/a/all_new_ms_marvel_by_jprart-d6tindx.jpg"
+      "https://orig00.deviantart.net/56c0/f/2013/312/a/a/all_new_ms_marvel_by_jprart-d6tindx.jpg",
+    button: "V"
   },
   {
     id: 1009189,
     url:
-      "https://i.annihil.us/u/prod/marvel//universe3zx/images/f/f9/BlackWidow.jpg"
+      "https://i.annihil.us/u/prod/marvel//universe3zx/images/f/f9/BlackWidow.jpg",
+    button: "E"
   },
 
   {
     id: 1017111,
     url:
-      "https://i.pinimg.com/564x/8e/6f/89/8e6f8914695b17afa1411c7b87f5958a.jpg"
+      "https://i.pinimg.com/564x/8e/6f/89/8e6f8914695b17afa1411c7b87f5958a.jpg",
+    button: "L"
   },
   {
     id: 1009629,
     url:
-      "http://media.comicbook.com/wp-content/uploads/2014/04/Storm_1_Bianchi_Variant.jpg"
+      "http://media.comicbook.com/wp-content/uploads/2014/04/Storm_1_Bianchi_Variant.jpg",
+
+    button: "!"
   }
 ];
-
-let charactersDivs = [];
 
 const API = "https://gateway.marvel.com/v1/public/characters/";
 const publicKey = `42ff63aab01f707692556ee06f049449`;
@@ -54,8 +60,6 @@ const hash = md5(ts + privateKey + publicKey);
 
 let query = "";
 let data = [];
-let items = [];
-let thumbnail = [];
 
 class App extends Component {
   constructor() {
@@ -71,7 +75,7 @@ class App extends Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  // First loop througth initial array to create divs with background DONE
+  // Loop througth initial array to create divs with background DONE
   //Then we will figure out api call
   // First we handle the state for the query, then we do a function to do the api call
   handleCloseModal() {
@@ -114,19 +118,19 @@ class App extends Component {
 
   render() {
     const { name, items, thumbnail } = this.state;
-    charactersDivs = characterList.map(character => {
+    let charactersDivs = characterList.map(character => {
       return (
         <div
           className="panel"
           style={{ backgroundImage: `url(${character.url})` }}
         >
-          {/*  This button has to open modal and handle api query */}
+          {/*  This button handles api query */}
           <button
             className="more"
             onClick={this.handleQuery}
             value={character.id}
           >
-            M
+            {character.button}
           </button>
 
           <ReactModal

@@ -1,18 +1,8 @@
 import React, { Component } from "react";
-import ReactModal from "react-modal";
 
 import "../App.css";
 
-let query = "";
-
 export default class Modal extends Component {
-  constructor() {
-    super();
-    this.state = {
-      showModal: false
-    };
-  }
-
   render() {
     const items = this.props.items;
     const image = this.props.thumbnail.path + "/portrait_incredible.jpg";
