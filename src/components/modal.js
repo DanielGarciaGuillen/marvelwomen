@@ -9,74 +9,25 @@ export default class Modal extends Component {
   constructor() {
     super();
     this.state = {
-      showModal: false,
-      query: ""
+      showModal: false
     };
-    this.handleQuery = this.handleQuery.bind(this);
-    this.validateTitle = this.validateTitle.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  setStateAsync(state) {
-    return new Promise(resolve => {
-      this.setState(state, resolve);
-    });
-  }
-  handleCloseModal() {
-    this.setState({ showModal: false });
-  }
-
-  async handleQuery({ currentTarget }) {
-    query = currentTarget.value;
-    await this.setStateAsync({ query: query, showModal: true });
-    await this.validateTitle();
-  }
-
-  //Passsing props to callback on parent component
-  validateTitle() {
-    const { onClick } = this.props;
-    onClick(query);
-  }
   render() {
-    const events = this.props.events;
+    const items = this.props.items;
     const image = this.props.thumbnail.path + "/portrait_incredible.jpg";
 
-    var listEvents = events.map(eve => {
-      return <li key={eve.name}>{eve.name}</li>;
+    var listEvents = items.map(item => {
+      return <li key={item.name}>{item.name}</li>;
     });
     return (
-      <React.Fragment>
-        <div className="panel panel5">
-          <button className="more" value="1009189" onClick={this.handleQuery}>
-            E
-          </button>
+      <div className="modalBox">
+        <img className="characterImage" src={image} alt="characterImage" />
+        <h2 className="nameCharacter">{this.props.name}</h2>
+        <h3 className="event">Events</h3>
 
-          <ReactModal
-            isOpen={this.state.showModal}
-            contentLabel="onRequestClose Example"
-            onRequestClose={this.handleCloseModal}
-            shouldCloseOnOverlayClick={true}
-            className="Modal"
-            overlayClassName="Overlay"
-          >
-            <div className="modalBox">
-              <button className="escapeButton" onClick={this.handleCloseModal}>
-                X
-              </button>
-
-              <img
-                className="characterImage"
-                src={image}
-                alt="characterImage"
-              />
-              <h2 className="nameCharacter">{this.props.name}</h2>
-              <h3 className="event">Events</h3>
-
-              <ol className="eventList">{listEvents}</ol>
-            </div>
-          </ReactModal>
-        </div>
-      </React.Fragment>
+        <ol className="eventList">{listEvents}</ol>
+      </div>
     );
   }
 }
